@@ -1,5 +1,5 @@
 import logging
-from naya.producer import stream_twitter
+from .logic.producer import stream_twitter
 from .factory import config, get_args
 
 logger = logging.getLogger(__name__)
