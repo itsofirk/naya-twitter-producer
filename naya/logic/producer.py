@@ -20,4 +20,4 @@ def stream_twitter(kafka_host, kafka_topic, tracking_tag, twitter_tokens):
         tracking_tag = '#' + tracking_tag
 
     logger.info("Starting streaming")
-    stream.filter(track=tracking_tag)
+    stream.filter(track=[tracking_tag])

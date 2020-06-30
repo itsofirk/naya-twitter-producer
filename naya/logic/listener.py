@@ -4,6 +4,8 @@ from kafka import KafkaProducer
 from tweepy import StreamListener
 
 logger = logging.getLogger(__name__)
+CONTINUE_ON_TIMEOUT = True
+CONTINUE_ON_EXCEPTION = False
 
 
 class LoggerListener(StreamListener):
@@ -18,4 +20,9 @@ class LoggerListener(StreamListener):
         return True
 
     def on_error(self, status):
-        logger.info(status)
+        logger.exception(status)
+        return CONTINUE_ON_EXCEPTION
+
+    def on_timeout(self):
+        logger.info("Timeout...")
+        return CONTINUE_ON_TIMEOUT  # To continue listening
