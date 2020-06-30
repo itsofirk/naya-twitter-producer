@@ -1,9 +1,12 @@
 import logging
 import sys
+from .factory import set_up
 
 logging.basicConfig()
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+_logger = logging.getLogger(__name__)
+_logger.setLevel(logging.INFO)
 
 if sys.gettrace():  # check if any debugger involved
-    logger.setLevel(logging.DEBUG)
+    _logger.setLevel(logging.DEBUG)
+
+set_up()
